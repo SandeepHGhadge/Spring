@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- Object  configure of Car and Engine-->
+    <bean id="Engine1" class="Constructor.PetrolEngine"></bean>
+    <bean id="Engine2" class="Constructor.DieselEngine"></bean>
+    <bean id="Car1" class="Constructor.PetrolCar">
+        <constructor-arg ref="Engine1"></constructor-arg>
+    </bean>
+    <bean id="Car2" class="Constructor.DieselCar">
+        <constructor-arg ref="Engine2"></constructor-arg>
+    </bean>
+
+    <!-- Object  configure Of Mobile And SimCard-->
+    <bean id="card1" class="Setter.Airtel"></bean>
+    <bean id="card2" class="Setter.Jio"></bean>
+    <bean id="mobile1" class="Setter.SmartPhone">
+        <property name="card" ref="card2"></property>
+    </bean>
+    <bean id="mobile2" class="Setter.FeaturePhone">
+        <property name="card" ref="card1"></property>
+    </bean>
+
+    <!-- Object  configure Of Laptop And Ram and GraphicsCard-->
+    <bean id="card" class="Laptop.GraphicsCard"></bean>
+    <bean id="ram" class="Laptop.Ram"></bean>
+    <bean id="laptop1" class="Laptop.Acer">
+        <constructor-arg ref="ram"></constructor-arg>
+    </bean>
+    <bean id="laptop2" class="Laptop.HP">
+        <constructor-arg ref="ram"></constructor-arg>
+        <property name="card" ref="card"></property>
+    </bean>
+
+    <!-- Object  configure Of Atm and Printer-->
+    <bean id="printer1" class="Atm.Printer"></bean>
+    <bean id="atm" class="Atm.Atm">
+        <property name="print" ref="printer"></property>
+    </bean>
+</beans>
